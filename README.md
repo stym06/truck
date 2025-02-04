@@ -1,6 +1,6 @@
 # 🚛 Truck Analytics
 
-Truck Analytics is a comprehensive platform for managing and analyzing data related to truck operations. It includes modules for data ingestion, real-time streaming, and an SDK for interacting with the platform. 📊
+Truck Analytics is a comprehensive platform for managing and analyzing data related to user activity tracking. It includes modules for data ingestion, real-time streaming, and an SDK for interacting with the platform. 📊
 
 ## 🧩 Modules
 
