@@ -1,3 +1,4 @@
+"use client"
 import { Menu, ChevronDown, LayoutDashboard, Layers, Box, Package, Sparkles, Star, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,9 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
+import { signIn } from "next-auth/react"
+import {signOut} from "next-auth/react"
+import { useSession } from "next-auth/react"
 
 const products = [
   {
@@ -49,6 +53,7 @@ const navigationItems = [
 ];
 
 export default function Navbar() {
+  const { data: session } = useSession()
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
@@ -113,16 +118,23 @@ export default function Navbar() {
 
           {/* Dashboard Button */}
           <div className="flex items-center gap-4">
-            <Button
+            {session && <Button
               variant="outline"
               className="hidden md:flex items-center gap-2 hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-0"
               asChild
             >
               <a href="/dashboard">
                 <LayoutDashboard className="h-4 w-4" />
-                Dashboard
+                 {session.user?.name }'s Dashboard
               </a>
-            </Button>
+            </Button>}
+            {!session && <Button onClick={() => signIn("google", {redirectTo: "/dashboard"})}>
+              Login
+            </Button>}
+            
+            {session && <Button onClick={() => signOut()}>
+              Logout
+            </Button>}
 
             {/* Mobile Navigation */}
             <div className="md:hidden">

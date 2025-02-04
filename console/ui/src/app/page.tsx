@@ -2,16 +2,15 @@ import { Footer } from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import Pricing from "@/components/Pricing";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { SessionProvider } from "next-auth/react"
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-      <HeroSection />
-      <Pricing />
-      <Footer />
-    </div>
+      <SessionProvider>
+        <Navbar />
+        <HeroSection />
+        <Pricing />
+        <Footer />
+      </SessionProvider>
   );
 }

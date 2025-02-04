@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Red_Hat_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +11,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const redHatDisplay = Red_Hat_Display({ subsets: ['latin'], display: 'swap', weight: ['400', '500', '700'] })
 
 export const metadata: Metadata = {
   title: "Truck Analytics",
@@ -25,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${redHatDisplay.className} antialiased`}
       >
         {children}
       </body>
