@@ -5,7 +5,6 @@ export async function getTeams(email?: string | null) {
     if (!email) {
         return [] as TeamDto[];
     }
-    //return a placeholder json
 
     let mockTeam: TeamDto[] = [{
         id: 1,
@@ -17,6 +16,8 @@ export async function getTeams(email?: string | null) {
         name: 'Platform',
         logo: 'https://example.com/team-logo.png'
     }];
-    
+
+    //TODO: fetch teams from the database
+
     return mockTeam
 }
